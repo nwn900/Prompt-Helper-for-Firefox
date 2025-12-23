@@ -1,0 +1,92 @@
+{
+  "manifest_version": 3,
+  "name": "Prompt Helper (Firefox clean-room port)",
+  "version": "0.2.4",
+  "description": "One-click prompt refinement for popular AI chat sites using local templates or your own API key.",
+  "permissions": [
+    "storage",
+    "activeTab",
+    "tabs"
+  ],
+  "host_permissions": [
+    "https://chat.openai.com/*",
+    "https://chatgpt.com/*",
+    "https://gemini.google.com/*",
+    "https://claude.ai/*",
+    "https://perplexity.ai/*",
+    "https://www.perplexity.ai/*",
+    "https://perplexity.com/*",
+    "https://www.perplexity.com/*",
+    "https://aistudio.google.com/*",
+    "https://makersuite.google.com/*",
+    "https://ai.google.dev/aistudio*",
+    "https://x.com/*",
+    "https://grok.com/*",
+    "https://www.grok.com/*",
+    "https://*.grok.com/*",
+    "https://x.ai/*",
+    "https://accounts.x.ai/*",
+    "https://*.x.ai/*",
+    "https://api.openai.com/*",
+    "https://api.anthropic.com/*",
+    "https://generativelanguage.googleapis.com/*"
+  ],
+  "background": {
+    "scripts": [
+      "background.js"
+    ],
+    "service_worker": "background.js"
+  },
+  "action": {
+    "default_title": "Prompt Helper",
+    "default_popup": "popup.html"
+  },
+  "options_ui": {
+    "page": "options.html",
+    "open_in_tab": true
+  },
+  "content_scripts": [
+    {
+      "matches": [
+        "https://chat.openai.com/*",
+        "https://chatgpt.com/*",
+        "https://gemini.google.com/*",
+        "https://claude.ai/*",
+        "https://perplexity.ai/*",
+        "https://www.perplexity.ai/*",
+        "https://perplexity.com/*",
+        "https://www.perplexity.com/*",
+        "https://aistudio.google.com/*",
+        "https://makersuite.google.com/*",
+        "https://ai.google.dev/aistudio*",
+        "https://x.com/*",
+        "https://grok.com/*",
+        "https://www.grok.com/*",
+        "https://*.grok.com/*",
+        "https://x.ai/*",
+        "https://accounts.x.ai/*",
+        "https://*.x.ai/*"
+      ],
+      "js": [
+        "content.js"
+      ],
+      "run_at": "document_idle",
+      "all_frames": true
+    }
+  ],
+  "commands": {
+    "improve_prompt": {
+      "suggested_key": {
+        "default": "Ctrl+Shift+E",
+        "mac": "Command+Shift+E"
+      },
+      "description": "Improve the current prompt"
+    }
+  },
+  "browser_specific_settings": {
+    "gecko": {
+      "id": "prompt-helper-firefox-cleanroom@local",
+      "strict_min_version": "109.0"
+    }
+  }
+}

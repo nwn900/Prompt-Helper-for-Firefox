@@ -1,0 +1,55 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Prompt Helper</title>
+  <style>
+    body { font: 13px system-ui, -apple-system, Segoe UI, Roboto, sans-serif; margin: 0; padding: 12px; width: 360px; }
+    .row { display:flex; gap:8px; align-items:center; margin-bottom:10px; }
+    select, button { font: inherit; }
+    select { width: 100%; padding: 6px 8px; }
+    button { padding: 8px 10px; border-radius: 10px; border: 1px solid rgba(0,0,0,0.15); background: white; cursor: pointer; }
+    .muted { opacity: 0.75; font-size: 12px; }
+    .history { max-height: 280px; overflow:auto; border-top: 1px solid rgba(0,0,0,0.1); padding-top: 10px; margin-top: 8px; }
+    .card { border: 1px solid rgba(0,0,0,0.12); border-radius: 12px; padding: 8px; margin-bottom: 8px; }
+    .card .top { display:flex; justify-content:space-between; gap: 10px; }
+    .mono { font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; white-space: pre-wrap; word-break: break-word; }
+    .smallbtn { padding: 6px 8px; border-radius: 10px; }
+  </style>
+</head>
+<body>
+  <div class="row">
+    <div style="flex:1">
+      <div class="muted">Provider</div>
+      <select id="provider">
+        <option value="local">Local (no API key)</option>
+        <option value="openai">OpenAI</option>
+        <option value="anthropic">Anthropic</option>
+        <option value="gemini">Gemini</option>
+      </select>
+    </div>
+    <button id="openOptions" title="Configure keys/models">Options</button>
+  </div>
+
+  <div class="row">
+    <div style="flex:1">
+      <div class="muted">Mode</div>
+      <select id="mode">
+        <option value="auto">Auto</option>
+        <option value="text">Text</option>
+        <option value="analysis">Analysis</option>
+        <option value="research">Research</option>
+        <option value="code">Code</option>
+        <option value="image">Image</option>
+        <option value="video">Video</option>
+      </select>
+    </div>
+    <button id="clearHistory" class="smallbtn" title="Delete local history">Clear</button>
+  </div>
+
+  <div class="muted">Tip: Shift+click Improve button to cycle modes. Ctrl+Shift+E triggers Improve.</div>
+  <div class="history" id="history"></div>
+  <script src="popup.js"></script>
+</body>
+</html>

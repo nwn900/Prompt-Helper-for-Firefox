@@ -1,0 +1,108 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Prompt Helper Options</title>
+  <style>
+    body { font: 14px system-ui, -apple-system, Segoe UI, Roboto, sans-serif; margin: 0; padding: 18px; max-width: 880px; }
+    h1 { font-size: 18px; margin: 0 0 10px; }
+    .grid { display:grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+    .card { border: 1px solid rgba(0,0,0,0.12); border-radius: 14px; padding: 14px; }
+    label { display:block; font-size: 12px; opacity: 0.8; margin-bottom: 4px; }
+    input, select { width: 100%; padding: 8px 10px; font: inherit; border-radius: 10px; border: 1px solid rgba(0,0,0,0.2); }
+    .row { display:flex; gap: 10px; }
+    .row > div { flex:1; }
+    .muted { opacity: 0.75; font-size: 12px; line-height: 1.4; }
+    .ok { color: #0b7; }
+    button { padding: 10px 12px; border-radius: 12px; border: 1px solid rgba(0,0,0,0.18); background: white; cursor:pointer; }
+    code { font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; }
+  </style>
+</head>
+<body>
+  <h1>Prompt Helper Options</h1>
+  <div class="muted">
+    Keys are stored in <b>browser local storage</b>. Prompts are sent only to the provider you select (if you enable API mode).
+  </div>
+
+  <div class="grid" style="margin-top:14px;">
+    <div class="card">
+      <div class="row">
+        <div>
+          <label>Provider</label>
+          <select id="provider">
+            <option value="local">Local (no API key)</option>
+            <option value="openai">OpenAI</option>
+            <option value="anthropic">Anthropic</option>
+            <option value="gemini">Gemini</option>
+          </select>
+        </div>
+        <div>
+          <label>Default mode</label>
+          <select id="mode">
+            <option value="auto">Auto</option>
+            <option value="text">Text</option>
+        <option value="analysis">Analysis</option>
+        <option value="research">Research</option>
+            <option value="code">Code</option>
+            <option value="image">Image</option>
+            <option value="video">Video</option>
+          </select>
+        </div>
+      </div>
+
+      <div style="margin-top:12px;" class="muted">
+        Keyboard: <code>Ctrl+Shift+E</code> / <code>Cmd+Shift+E</code>.
+      </div>
+
+      <div style="margin-top:12px;">
+        <button id="save">Save</button>
+        <span id="status" class="muted" style="margin-left:10px;"></span>
+      </div>
+    </div>
+
+    <div class="card">
+      <b>OpenAI</b>
+      <div style="margin-top:10px;">
+        <label>API key</label>
+        <input id="openaiKey" placeholder="sk-..." />
+      </div>
+      <div style="margin-top:10px;">
+        <label>Model</label>
+        <input id="openaiModel" placeholder="gpt-4o-mini" />
+      </div>
+    </div>
+
+    <div class="card">
+      <b>Anthropic</b>
+      <div style="margin-top:10px;">
+        <label>API key</label>
+        <input id="anthropicKey" placeholder="sk-ant-..." />
+      </div>
+      <div style="margin-top:10px;">
+        <label>Model</label>
+        <input id="anthropicModel" placeholder="claude-3-5-sonnet-latest" />
+      </div>
+    </div>
+
+    <div class="card">
+      <b>Gemini</b>
+      <div style="margin-top:10px;">
+        <label>API key</label>
+        <input id="geminiKey" placeholder="AIza..." />
+      </div>
+      <div style="margin-top:10px;">
+        <label>Model</label>
+        <input id="geminiModel" placeholder="gemini-2.5-flash" />
+      </div>
+
+      <div style="margin-top:10px;">
+        <label>Max output tokens</label>
+        <input id="geminiMaxOutputTokens" placeholder="2048" />
+      </div>
+    </div>
+  </div>
+
+  <script src="options.js"></script>
+</body>
+</html>
